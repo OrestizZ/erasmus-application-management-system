@@ -1,9 +1,9 @@
 :root {
-    --darkgrey: #212339;
-    --bright-red: crimson;
-    --white: #ffffff;
-    --font-base: 16px;
-  }
+  --darkgrey: #212339;
+  --bright-red: crimson;
+  --white: #ffffff;
+  --font-base: 16px;
+}
   
 * {
   margin: 0;
@@ -15,6 +15,7 @@
 .main { 
   background-color: var(--darkgrey);
   padding: 1rem;
+  min-height: 100vh;
 }
 
 .main-container {
@@ -26,8 +27,6 @@
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  min-height: 110vh;
-  
 }
 
 .main-contents {
