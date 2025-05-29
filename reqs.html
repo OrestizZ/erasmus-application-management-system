@@ -1,0 +1,96 @@
+<!-- reqs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requirements - Erasmus+ University of Compton</title>
+  <link rel="stylesheet" href="styles/reqs.css">
+  <link rel="stylesheet" href="styles/header.css">
+</head>
+<body>
+  <div data-include="header.html"></div>
+	<script src="scripts/include-header.js"></script>
+
+  <main class="main">
+    <div class="main-container">
+      <div class="main-contents">
+        <h1>Minimum Eligibility Requirements</h1>
+
+        <!-- Summary table -->
+        <table class="requirements-table">
+          <thead>
+            <tr>
+              <th>Requirement</th>
+              <th>Minimum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Current year of study</td>
+              <td>≥ 2nd year</td>
+            </tr>
+            <tr>
+              <td>Passed courses (%)</td>
+              <td>≥ 70%</td>
+            </tr>
+            <tr>
+              <td>GPA</td>
+              <td>≥ 6.50</td>
+            </tr>
+            <tr>
+              <td>English proficiency</td>
+              <td>B2 or above</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Informational PDF link -->
+        <p>
+          <a class="external" href="media/pdf/erasmus_reqs.pdf" target="_blank" rel="noopener noreferrer">
+            Download detailed requirements (PDF)
+          </a>
+        </p>
+
+        <!-- Quick-check form -->
+        <form class="quick-check-form">
+          <h2>Quick Eligibility Check</h2>
+
+          <div class="form-group">
+            <label for="yearSelect">Year of Study</label>
+            <select id="yearSelect" name="yearSelect">
+              <option>1st</option>
+              <option>2nd</option>
+              <option>3rd</option>
+              <option>4th</option>
+              <option>More</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="percentInput">Passed Courses (%)</label>
+            <input type="number" id="percentInput" name="percentInput" min="0" max="100">
+          </div>
+
+          <div class="form-group">
+            <label for="gpaInput">GPA</label>
+            <input type="number" id="gpaInput" name="gpaInput" step="0.01">
+          </div>
+
+          <fieldset class="form-group radio-group">
+            <legend>English Proficiency</legend>
+            <label><input type="radio" name="engCert" value="A1"> A1</label>
+            <label><input type="radio" name="engCert" value="A2"> A2</label>
+            <label><input type="radio" name="engCert" value="B1"> B1</label>
+            <label><input type="radio" name="engCert" value="B2"> B2</label>
+            <label><input type="radio" name="engCert" value="C1"> C1</label>
+            <label><input type="radio" name="engCert" value="C2"> C2</label>
+          </fieldset>
+
+          <button type="submit" class="main-btn"><a href="#">Check Eligibility</a></button>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

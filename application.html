@@ -1,0 +1,94 @@
+<!-- application.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Form - Erasmus+ University of Compton</title>
+  <link rel="stylesheet" href="styles/application.css">
+  <link rel="stylesheet" href="styles/header.css">
+</head>
+<body>
+  <div data-include="header.html"></div>
+	<script src="scripts/include-header.js"></script>
+  
+  <main class="main">
+    <div class="main-container">
+      <div class="main-contents">
+        <h1>Application Form</h1>
+
+        <form class="application-form">
+          <!-- Name fields -->
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Georgios">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Dilioridis">
+          </div>
+          <div class="form-group">
+            <label for="studentId">Student ID</label>
+            <input type="text" id="studentId" name="studentId" placeholder="2022202100047">
+          </div>
+
+          <!-- Academic fields -->
+          <div class="form-group">
+            <label for="passedPercent">Passed Courses (%)</label>
+            <input type="number" id="passedPercent" name="passedPercent" min="0" max="100" placeholder="75">
+          </div>
+          <div class="form-group">
+            <label for="gpa">GPA</label>
+            <input type="number" step="0.01" id="gpa" name="gpa" min="0" max="10" placeholder="7.5">
+          </div>
+
+          <!-- Language proficiency -->
+          <fieldset class="form-group radio-group">
+            <legend>English Proficiency</legend>
+            <label><input type="radio" name="engLevel" value="A1"> A1</label>
+            <label><input type="radio" name="engLevel" value="A2"> A2</label>
+            <label><input type="radio" name="engLevel" value="B1"> B1</label>
+            <label><input type="radio" name="engLevel" value="B2"> B2</label>
+            <label><input type="radio" name="engLevel" value="C1"> C1</label>
+            <label><input type="radio" name="engLevel" value="C2"> C2</label>
+          </fieldset>
+
+          <!-- University choices -->
+          <div class="form-group">
+            <label for="uni1">University Choice 1</label>
+            <select id="uni1" name="uni1">
+              <option>University of Peloponnese</option>
+              <option>University of Crete</option>
+              <option>University of West Attica</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="uni2">University Choice 2</label>
+            <select id="uni2" name="uni2">
+              <option>University of Crete</option>
+              <option>University of West Attica</option>
+              <option>University of Peloponnese</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="uni3">University Choice 3</label>
+            <select id="uni3" name="uni3">
+              <option>University of West Attica</option>
+              <option>University of Peloponnese</option>
+              <option>University of Crete</option>
+            </select>
+          </div>
+
+          <!-- Confirmation -->
+          <div class="form-group checkbox-group">
+            <label><input type="checkbox" name="terms"> I accept the terms and conditions</label>
+          </div>
+
+          <button type="submit" class="main-btn"><a href="#">Submit Application</a></button>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+

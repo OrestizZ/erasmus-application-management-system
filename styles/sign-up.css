@@ -1,0 +1,105 @@
+:root {
+  --darkgrey: #212339;
+  --bright-red: crimson;
+  --white: #ffffff;
+  --font-base: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main { 
+  background-color: var(--darkgrey); 
+  padding: 2rem 1rem; 
+
+}
+
+.main-container { 
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  min-height: 100vh;
+}
+
+.signup-form { 
+  width: 100%; }
+.form-group { 
+  margin-bottom: 1rem; 
+  display: flex; 
+  flex-direction: column; }
+.form-group label { 
+  margin-bottom: 0.25rem; 
+  color: var(--white); 
+  font-size: 1rem; }
+.form-group input { 
+  padding: 0.5rem; 
+  border: none; 
+  border-radius: 4px; 
+  font-size: 1rem; }
+
+.main-contents h1 { 
+  color: var(--white); 
+  font-size: 1.5rem; 
+  margin-bottom: 0.75rem; }
+
+.main-btn { 
+  font-size: 1rem; 
+  background-color: var(--bright-red);
+    color: var(--white); 
+  padding: 0.5rem 1.25rem; 
+  border: none; 
+  border-radius: 4px; 
+  margin-top: 1rem; 
+  cursor: pointer; 
+  transition: all 0.35s; 
+  outline: none; }
+.main-btn:hover { 
+  background-color: darkred; }
+.main-btn a { 
+  position: relative; 
+  z-index: 2; 
+  text-decoration: none; 
+  color: inherit; }
+
+.main-img-container img { 
+  width: 80%; 
+  max-width: 300px; 
+  height: auto; }
+
+/* Tablet */
+  @media (min-width: 601px) {
+  .main-container {
+    flex-direction: row;
+    max-width: 800px;
+    gap: 3rem;
+    min-height: 100vh;
+  }
+  .main-contents h1 {
+    font-size: 2.25rem;
+  }
+  .main-contents p {
+    font-size: 1.1rem;
+  }
+  .main-img-container img {
+    max-width: 200px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  .navigationDiv { width: 100%; margin: auto; }
+  .main-container { min-height: 90vh; width: 80%; gap: 2rem; }
+  .main-contents h1 { font-size: 2rem; }
+  .form-group input { font-size: 1.2rem; }
+  .main-img-container img { max-width: 500px; }
+}
+  

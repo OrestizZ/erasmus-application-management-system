@@ -1,0 +1,172 @@
+header{
+    /* position: fixed; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    width: 100%;
+    height: 50px;
+    top: 0px;
+    z-index: 1000;
+    background: var(--bright-red);
+}
+
+header li, a, button{
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.logo{
+    cursor: pointer;
+}
+
+.logo a{
+    color: var(--white);
+    font-size: 18px;
+}
+
+.nav-links{
+    list-style: none;
+}
+
+.nav-links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav-links li a{
+    color: var(--white);
+    transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover{
+    color: #cccccc;
+}
+
+.nav-links li a:active{ 
+    color: #cccccc;
+}
+
+button{
+    background-color: black;
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#log-in button:hover{
+    background: #333;
+}
+
+#sign-up button:hover{
+     background: #333;
+}
+
+/* Toggle Container */
+.off-canvas-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 1em;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+    color: var(--white);
+    /* font-weight: bold; */
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Caret Arrow */
+.off-canvas-caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--white);
+    transition: transform 0.3s ease;
+}
+
+.off-canvas-caret.rotate {
+    transform: rotate(180deg);
+}
+
+/* Menu Panel from Top */
+/* Off-canvas menu container */
+#off-canvas-menu {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    background: var(--darkgrey);
+    padding: 1em 2em;
+    /* transition: top 0.3s ease;  */
+    z-index: 999;
+    box-shadow: 0px 15px 15px rgba(0,0,0,0.1);
+}
+
+/* Show menu below header */
+#off-canvas-menu.show {
+    top: 60px; /* adjust this if header height changes */
+}
+
+/* Menu list */
+#off-canvas-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Menu items as plain links */
+#off-canvas-menu li {
+    padding: 0.75em 0;
+    border-bottom: 1px solid var(--white);
+}
+
+#off-canvas-menu li:hover {
+    background-color: #373958;
+}
+
+#off-canvas-menu li:last-child {
+    border-bottom: none;
+}
+
+#off-canvas-menu a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    font-weight: 600;
+}
+
+@media (max-width: 880px) {
+    .menu-default{
+        display: none;
+        opacity: 0;
+    }
+
+    .logo a{
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 881px){
+    #off-canvas-toggle{
+        display: none;
+        opacity: 0;
+    }
+
+    #off-canvas-menu{
+        display: none;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    header{
+        padding: 30px 1%;
+    }
+}

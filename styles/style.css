@@ -1,0 +1,127 @@
+:root {
+    --darkgrey: #212339;
+    --bright-red: crimson;
+    --white: #ffffff;
+    --font-base: 16px;
+  }
+  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main { 
+  background-color: var(--darkgrey);
+  padding: 1rem;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  min-height: 110vh;
+  
+}
+
+.main-contents {
+  flex: 1;
+  width: 100%;
+  max-width: 600px;
+  color: var(--white);
+}
+
+.main-contents h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+
+.main-contents p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+
+.main-btn {
+  display: inline-block;
+  font-size: 1rem;
+  background: var(--bright-red);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-sizing: border-box;
+}
+
+.main-btn:hover {
+  background: darkred;
+}
+
+.main-btn a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.main-img-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-img-container img {
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+}
+
+/* Phone (< 601px) */
+@media (max-width: 600px) {
+
+}
+
+/* Tablet (601px – 1024px) */
+@media (min-width: 601px) {
+  .main-container {
+    flex-direction: row;
+    padding: 2rem;
+    gap: 3rem;
+  }
+  .main-contents h1 {
+    font-size: 2.25rem;
+  }
+  .main-contents p {
+    font-size: 1.1rem;
+  }
+  .main-img-container img {
+    max-width: 500px;
+  }
+}
+
+/* Desktop (>1024px) */
+@media (min-width: 1025px) {
+  .main-container {
+    width: 80%;
+    gap: 4rem;
+  }
+  .main-contents h1 {
+    font-size: 2.5rem;
+  }
+  .main-contents p {
+    font-size: 1.2rem;
+  }
+  .main-img-container img {
+    max-width: 600px;
+  }
+}
