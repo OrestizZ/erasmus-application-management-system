@@ -71,10 +71,7 @@ button{
     align-items: center;
     gap: 0.5em;
     padding: 0.5em 1em;
-    /* border: 1px solid #ccc; */
-    /* border-radius: 5px; */
     color: var(--white);
-    /* font-weight: bold; */
     font-weight: 600;
     cursor: pointer;
 }
@@ -100,16 +97,15 @@ button{
     top: -100%;
     left: 0;
     width: 100%;
-    background: var(--darkgrey);
-    padding: 1em 2em;
-    /* transition: top 0.3s ease;  */
+    background: var(--bright-red);
+    padding: 1em 1em;
     z-index: 999;
-    box-shadow: 0px 15px 15px rgba(0,0,0,0.1);
+    box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
 }
 
 /* Show menu below header */
 #off-canvas-menu.show {
-    top: 60px; /* adjust this if header height changes */
+    top: 60px;
 }
 
 /* Menu list */
