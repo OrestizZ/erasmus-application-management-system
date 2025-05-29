@@ -1,8 +1,15 @@
 :root {
+<<<<<<< HEAD
   --darkgrey: #212339;
   --bright-red: crimson;
   --white: #ffffff;
   --font-base: 16px;
+=======
+    --darkgrey: #212339;
+    --bright-red: crimson;
+    --white: #ffffff;
+    --font-base: 16px;
+>>>>>>> c95e67f80ace537fb5551918fc5ec0c12d1555a8
 }
   
 * {
@@ -27,6 +34,10 @@
   width: 100%;
   max-width: 1200px;
   margin: auto;
+<<<<<<< HEAD
+=======
+  min-height: 100vh;
+>>>>>>> c95e67f80ace537fb5551918fc5ec0c12d1555a8
 }
 
 .main-contents {
