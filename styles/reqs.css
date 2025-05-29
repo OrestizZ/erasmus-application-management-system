@@ -15,6 +15,7 @@
 .main {
   background: var(--darkgrey);
   padding: 1rem;
+  min-height: 100vh;
 }
 
 .main-container {
