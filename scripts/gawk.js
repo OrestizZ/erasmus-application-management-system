@@ -1,7 +1,6 @@
 document.querySelector('.signup-form').addEventListener('submit', function(e) {
-  let valid = true; // Σημαία για έλεγχο αν θα στείλουμε τη φόρμα
+  let valid = true;
 
-  // Καθαρίζουμε τα προηγούμενα μηνύματα
   document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
 
   const firstName = document.getElementById('firstName').value.trim();
@@ -12,31 +11,29 @@ document.querySelector('.signup-form').addEventListener('submit', function(e) {
   const password = document.getElementById('password').value.trim();
   const confirmPassword = document.getElementById('confirmPassword').value.trim();
 
-  // Όνομα
+  // Name
   if (/\d/.test(firstName)) {
     document.getElementById('firstNameError').textContent = "The name must not contain any digits.";
     valid = false;
   }
 
-  // Επίθετο
+  // Surname
   if (/\d/.test(lastName)) {
     document.getElementById('lastNameError').textContent = "The surname must not contain any digits.";
     valid = false;
   }
 
-  // Αριθμός Μητρώου
+  // Student ID
   if (!/^(2022\d{9})$/.test(studentId)) {
     document.getElementById('studentIdError').textContent = "The student id must be 13 digits in length and begin with '2022'";
     valid = false;
   }
 
-  // Τηλέφωνο
+  // Tel
   if (!/^\d{10}$/.test(phone)) {
     document.getElementById('phoneError').textContent = "The phone number must be 10 digits in length.";
     valid = false;
   }
-
-  // Email (HTML5 type="email" κάνει βασικό έλεγχο)
 
   // Password
   if (password.length < 5 || !/[!@#$%^&*]/.test(password)) {
@@ -50,7 +47,7 @@ document.querySelector('.signup-form').addEventListener('submit', function(e) {
     valid = false;
   }
 
-  // Αν υπάρχουν λάθη, σταματάμε το submit
+  // If errors exist, don't submit the form.
   if (!valid) {
     e.preventDefault();
   }

@@ -15,65 +15,67 @@
   <main class="main">
     <div class="main-container">
       <div class="main-contents">
-        <h1>Create Your Account</h1>
-        <form class="signup-form">
+        <div id="successMessage" class="success-message" style="display: none;">
+          <h1>Account created!</h1>
+          <p>You can now try to <a href="login.html">login</a> to your account.</p>
+        </div>
+        <h1 class="signup-form-title">Create Your Account</h1>
+        <form class="signup-form" method="POST" action="signup.php">
           <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Giorgos" required>
+            <input type="text" id="firstName" name="firstName" placeholder="Giorgos" maxlength="50" required>
             <span class="error-message" id="firstNameError"></span>
           </div>
 
           <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Dilioridis" required>
+            <input type="text" id="lastName" name="lastName" placeholder="Dilioridis" maxlength="50" required>
             <span class="error-message" id="lastNameError"></span>
           </div>
 
           <div class="form-group">
             <label for="studentId">Student ID</label>
-            <input type="text" id="studentId" name="studentId" placeholder="2021202200047" required>
+            <input type="text" id="studentId" name="studentId" placeholder="2021202200047" maxlength="13" required>
             <span class="error-message" id="studentIdError"></span>
           </div>
 
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="6966661821" required>
+            <input type="tel" id="phone" name="phone" placeholder="6966661821" maxlength="10" required>
             <span class="error-message" id="phoneError"></span>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="dit21047@go.uop.gr" required>
+            <input type="email" id="email" name="email" placeholder="dit21047@go.uop.gr" maxlength="50" required>
             <span class="error-message" id="emailError"></span>
           </div>
 
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="peraste_me_please" required>
+            <input type="text" id="username" name="username" placeholder="peraste_me_please" maxlength="50" required>
             <span class="error-message" id="usernameError"></span>
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="••••••••" required>
+            <input type="password" id="password" name="password" placeholder="••••••••" maxlength="100" required>
             <span class="error-message" id="passwordError"></span>
           </div>
 
           <div class="form-group">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" maxlength="100" required>
             <span class="error-message" id="confirmPasswordError"></span>
           </div>
 
           <button type="submit" class="main-btn">Sign Up</button>
         </form>
       </div>
-      <!-- <div class="main-img-container">
-        <img src="pics&vids/traveler.svg" alt="traveler" id="main-img">
-      </div> -->
     </div>
   </main>
-  <script src="scripts/sign-up-form-validation.js"></script>
+  <script src="scripts/sign-up-form-client-validation.js"></script>
+  <script src="scripts/signup-form-server-validation.js"></script>
 </body>
 </html>
 

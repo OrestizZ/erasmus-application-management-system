@@ -45,7 +45,7 @@
 
 .requirements-table th,
 .requirements-table td {
-  border: 1px solid #444;
+  border: 1px solid var(--white);
   padding: 0.75rem;
   text-align: left;
 }
@@ -135,6 +135,18 @@
   max-width: 300px;
   border-radius: 8px;
   height: auto;
+}
+
+#result {
+  margin-top: 15px;
+  font-size: 1.1em;
+}
+#result ul {
+  list-style-type: none;
+  padding: 0;
+}
+#result ul li::before {
+  color: red;
 }
 
 @media (min-width: 601px) {
