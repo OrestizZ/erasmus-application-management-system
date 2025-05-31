@@ -31,7 +31,7 @@ document.querySelector(".signup-form").addEventListener("submit", async (e) => {
       // Μπορείς να εμφανίσεις μήνυμα επιτυχίας
       const successMessage = document.getElementById("successMessage");
       document.querySelector(".signup-form").style.display = "none";
-      // document.querySelector(".signup-form-title").style.display = "none";
+      document.querySelector(".signup-form-title").style.display = "none";
       document.getElementById("successMessage").style.display = "block";
       form.reset();
     }

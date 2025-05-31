@@ -1,5 +1,6 @@
 function validateSignupForm() {
   let valid = true;
+  // let errors = {};
 
   document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
 
@@ -16,6 +17,7 @@ function validateSignupForm() {
     valid = false;
     document.getElementById('firstNameError').textContent = "First name cannot contain digits.";
   }
+
   if (/\d/.test(lastName)) {
     valid = false;
     document.getElementById('lastNameError').textContent = "Last name cannot contain digits.";
@@ -31,6 +33,11 @@ function validateSignupForm() {
   if (!/^\d{10}$/.test(phone)) {
     valid = false;
     document.getElementById('phoneError').textContent = "Phone must be exactly 10 digits.";
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    valid = false;
+    document.getElementById('emailError').textContent = "Please enter a valid email address.";
   }
 
   // Passwords: match, 5+ characters, 1 symbol

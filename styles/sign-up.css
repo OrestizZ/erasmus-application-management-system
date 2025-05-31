@@ -92,6 +92,15 @@
   font-weight: bold;
 }
 
+#successMessage h1,
+#successMessage p{
+  color: var(--white);
+}
+
+#successMessage a{
+  color: var(--bright-red);
+}
+
 /* Tablet */
   @media (min-width: 601px) {
   .main-container {
