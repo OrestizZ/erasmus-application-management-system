@@ -1,7 +1,6 @@
 <?php
 header('Content-Type: application/json');
 
-// Ενεργοποίηση exceptions για mysqli
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 $conn = new mysqli("localhost", "root", "", "compton_db");
@@ -20,7 +19,6 @@ $password = $_POST['password'] ?? '';
 
 $errors = [];
 
-// Έλεγχος για υπάρχοντα email/username/studentId στη βάση
 try {
     $check = $conn->prepare("SELECT email, username, student_id FROM users WHERE email = ? OR username = ? OR student_id = ?");
     $check->bind_param("sss", $email, $username, $studentId);
@@ -46,7 +44,6 @@ try {
         exit;
     }
 
-    // Εισαγωγή χρήστη
     $hashed = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, student_id, phone, email, username, password_hash) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("sssssss", $first, $last, $studentId, $phone, $email, $username, $hashed);
@@ -57,3 +54,4 @@ try {
 } catch (mysqli_sql_exception $e) {
     echo json_encode(["errors" => ["server" => "Database error. Please try again."]]);
 }
+?>

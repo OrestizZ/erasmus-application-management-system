@@ -65,6 +65,10 @@ button{
      background: #333;
 }
 
+.profile img {
+    max-width: 40px;
+}
+
 /* Toggle Container */
 .off-canvas-toggle {
     display: inline-flex;
@@ -136,6 +140,25 @@ button{
     display: block;
     width: 100%;
     font-weight: 600;
+}
+
+.profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-icon {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+}
+
+.profile .dropdown {
+  display: block;
 }
 
 @media (max-width: 880px) {
