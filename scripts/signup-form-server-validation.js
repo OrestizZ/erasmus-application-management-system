@@ -12,8 +12,8 @@ document.querySelector(".signup-form").addEventListener("submit", async (e) => {
   // Καθαρίζουμε παλιά server-side error μηνύματα
   document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
 
-  try {
-    const response = await fetch("signup.php", {
+  try { 
+    const response = await fetch("php/signup.php", {
       method: "POST",
       body: formData
     });

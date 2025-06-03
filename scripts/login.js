@@ -7,7 +7,7 @@ document.querySelector(".login-form").addEventListener("submit", async (e) => {
   document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
 
   try {
-    const response = await fetch("login.php", {
+    const response = await fetch("php/login.php", {
       method: "POST",
       body: formData
     });

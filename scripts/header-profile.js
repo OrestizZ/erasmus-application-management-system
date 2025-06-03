@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Check login status
-  fetch("status.php")
+  fetch("php/status.php")
     .then(response => response.json())
     .then(data => {
       if (data.loggedIn) {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (logoutLink) {
     logoutLink.addEventListener("click", async (e) => {
       e.preventDefault();
-      await fetch("logout.php");
+      await fetch("php/logout.php");
       window.location.reload(); // Refresh page για να επανεμφανίσει τα login/signup κουμπιά
     });
   }
