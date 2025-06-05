@@ -1,5 +1,7 @@
 <?php
 session_start();
+session_unset();
 session_destroy();
-header("Location: index.html");
+http_response_code(200);
+header("Location: ../index.html");
 ?>

@@ -1,33 +1,33 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Check login status
+const loginButtons = document.querySelector(".login-signup-buttons");
+const profileDiv = document.querySelector(".profile");
+const logoutLink = document.getElementById("logout");
+
+if (loginButtons && profileDiv && logoutLink) {
+  
+  // Έλεγχος login status
   fetch("php/status.php")
     .then(response => response.json())
     .then(data => {
       if (data.loggedIn) {
-        // Ο χρήστης έχει κάνει login
-        document.querySelector(".login-signup-buttons").style.display = "none";
-        document.querySelector(".profile").style.display = "block"; // ή block ανάλογα με το CSS σου
+        loginButtons.style.display = "none";
+        profileDiv.style.display = "block";
 
-        // Προαιρετικά: Δείχνει το όνομα χρήστη στο dropdown
+        // Προαιρετικά: εμφάνιση username αν υπάρχει
         const profileUsername = document.querySelector(".profile-username");
         if (profileUsername && data.username) {
           profileUsername.textContent = data.username;
         }
       } else {
-        // Ο χρήστης είναι visitor
-        document.querySelector(".login-signup-buttons").style.display = "block"; // ή block
-        document.querySelector(".profile").style.display = "none";
+        loginButtons.style.display = "block";
+        profileDiv.style.display = "none";
       }
     })
     .catch(error => console.error("Error fetching login status:", error));
 
-  // Handle logout
-  const logoutLink = document.getElementById("logout");
-  if (logoutLink) {
-    logoutLink.addEventListener("click", async (e) => {
-      e.preventDefault();
-      await fetch("php/logout.php");
-      window.location.reload(); // Refresh page για να επανεμφανίσει τα login/signup κουμπιά
-    });
-  }
-});
+  // Logout handler
+  logoutLink.addEventListener("click", async (e) => {
+    e.preventDefault();
+    await fetch("php/logout.php");
+    window.location.reload();
+  });
+}

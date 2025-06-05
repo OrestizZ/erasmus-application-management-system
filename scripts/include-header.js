@@ -13,9 +13,18 @@ window.addEventListener("DOMContentLoaded", () => {
       .then(data => {
         el.innerHTML = data;
 
-        const script = document.createElement('script');
-        script.src = 'scripts/off-canvas-menu.js';
-        document.body.appendChild(script);
+        // Εδώ φορτώνεις όλα τα scripts που αφορούν το header, π.χ.
+        const offCanvasScript = document.createElement('script');
+        offCanvasScript.src = 'scripts/off-canvas-menu.js';
+        document.body.appendChild(offCanvasScript);
+
+        const headerProfileScript = document.createElement('script');
+        headerProfileScript.src = 'scripts/header-profile.js';
+        document.body.appendChild(headerProfileScript);
+
+        const profileDropdownScript = document.createElement('script');
+        profileDropdownScript.src = 'scripts/profile-dropdown.js';
+        document.body.appendChild(profileDropdownScript);
       })
       .catch(error => {
         console.error(error);
