@@ -3,11 +3,7 @@ header('Content-Type: application/json');
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-$conn = new mysqli("localhost", "root", "", "compton_db");
-if ($conn->connect_error) {
-    echo json_encode(["errors" => ["server" => "Connection failed: " . $conn->connect_error]]);
-    exit;
-}
+require_once 'db_connect.php';
 
 $first = $_POST['firstName'] ?? '';
 $last = $_POST['lastName'] ?? '';

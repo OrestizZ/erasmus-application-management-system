@@ -3,11 +3,7 @@ session_start();
 
 header('Content-Type: application/json');
 
-$conn = new mysqli("localhost", "root", "", "compton_db");
-if ($conn->connect_error) {
-    echo json_encode(["errors" => ["server" => "Connection failed: " . $conn->connect_error]]);
-    exit;
-}
+require_once 'db_connect.php';
 
 $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
