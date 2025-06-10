@@ -166,13 +166,16 @@ button{
 
 .profile .dropdown {
     position: absolute;
-    right: 0;
+    /* right: 0; */
     background-color: var(--bright-red);
     box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+    /* width: 50%; */
     border: none;
     padding: 10px 0;
     min-width: 160px;
     z-index: 999;
+    /* left: 80%; */
+    /* transform: translateX(-50%); */
 }
 
 .profile .dropdown.show {
@@ -207,6 +210,9 @@ button{
     #off-canvas-menu{
         display: none;
         opacity: 0;
+    }
+    header{
+        padding: 30px 1%;
     }
 }
 

@@ -61,24 +61,29 @@
   font-size: 1.5rem; 
   margin-bottom: 0.75rem; }
 
-.main-btn { 
-  font-size: 1rem; 
-  background-color: var(--bright-red);
-  color: var(--white); 
-  padding: 0.5rem 1.25rem; 
-  border: none; 
-  border-radius: 4px; 
-  margin-top: 1rem; 
-  cursor: pointer; 
-  transition: all 0.35s; 
-  outline: none; }
-.main-btn:hover { 
-  background-color: darkred; }
-.main-btn a { 
-  position: relative; 
-  z-index: 2; 
-  text-decoration: none; 
-  color: inherit; }
+.main-btn {
+  display: inline-block;
+  font-size: 1rem;
+  background: var(--bright-red);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.main-btn:hover {
+  background: darkred;
+}
+
+.main-btn a {
+  color: inherit;
+  text-decoration: none;
+}
 
 .main-img-container img { 
   width: 80%; 
@@ -98,6 +103,15 @@
 }
 
 #successMessage a{
+  color: var(--bright-red);
+}
+
+#login{
+  color: var(--white);
+}
+
+#login a{
+  text-decoration: none;
   color: var(--bright-red);
 }
 

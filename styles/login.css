@@ -80,6 +80,7 @@
   cursor: pointer;
   transition: background 0.3s;
   text-align: center;
+  width: 100%;
 }
 
 .main-btn:hover {
@@ -89,6 +90,15 @@
 .main-btn a {
   color: inherit;
   text-decoration: none;
+}
+
+#signup{
+  color: var(--white);
+}
+
+#signup a{
+  text-decoration: none;
+  color: var(--bright-red);
 }
 
 #loginError {

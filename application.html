@@ -11,13 +11,15 @@
 </head>
 <body>
   <div data-include="header.html"></div>
-  
   <main class="main">
     <div class="main-container">
       <div class="main-contents">
-        <h1>Application Form</h1>
-
+        <span id="login-warning">
+        You must be <a href="login.html">logged in</a> to fill out this form.
+        </span>
+        
         <form class="application-form">
+          <h1>Application Form</h1>
           <!-- Name fields -->
           <div class="form-group">
             <label for="firstName">First Name</label>
@@ -89,6 +91,7 @@
       </div>
     </div>
   </main>
+  <script src="scripts/form-access-check.js"></script>
 </body>
 </html>
 
