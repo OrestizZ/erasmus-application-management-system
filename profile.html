@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Erasmus+ University of Compton</title>
+  <link rel="stylesheet" href="styles/profile.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <script src="scripts/include-header.js"></script>
+</head>
+<body>
+  <div data-include="header.html"></div>
+
+  <main class="main">
+    <div class="main-container">
+      <div class="form-container">
+        <h1>Credential Change</h1>
+        <form class="change-form">
+          <span id="changeError" class="error-message"></span>
+          <span id="changeSuccess" class="success-message"></span>
+          <div class="form-group">
+            <label for="field">Choose credential that you would like to change</label>
+            <select id="field" name="field">
+              <option>First Name</option>
+              <option>Last Name</option>
+              <option>Student ID</option>
+              <option>Phone</option>
+              <option>Email</option>
+              <option>Password</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="newValue">Enter new credential value</label>
+            <input type="text" id="newValue" name="newValue">
+          </div>
+          <button type="submit" class="main-btn">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script src="scripts/change-credentials-input-restrictions.js"></script>
+  <script src="scripts/change-credentials-client-validation.js"></script>
+  <script src="scripts/change-credentials-server-validation.js"></script>
+</body>
+</html>

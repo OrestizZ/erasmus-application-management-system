@@ -1,6 +1,5 @@
 function validateSignupForm() {
   let valid = true;
-  // let errors = {};
 
   document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
 
