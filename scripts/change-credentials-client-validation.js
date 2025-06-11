@@ -28,7 +28,7 @@ function validateChangeCredentials() {
     valid = false;
     document.getElementById('changeError').textContent = "Please enter a valid email address.";
   }
-  else if (getField === 'Password' && value.length < 5 || !/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
+  else if (getField === 'Password' && (value.length < 5 || !/[!@#$%^&*(),.?":{}|<>]/.test(value))) {
     valid = false;
     document.getElementById('changeError').textContent = "Password must be at least 5 chars and contain at least 1 symbol.";
   }

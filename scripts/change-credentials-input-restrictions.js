@@ -15,4 +15,6 @@ fieldSelect.addEventListener('change', () => {
     const selected = fieldSelect.value;
     const max = maxlengthMap[selected] || '';
     newValueInput.setAttribute('maxlength', max);
+    newValueInput.type = (selected === 'Password') ? 'password' : 'text';
+    document.getElementById('changeSuccess').textContent = '';
 });
