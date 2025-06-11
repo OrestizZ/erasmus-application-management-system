@@ -28,6 +28,6 @@ if (loginButtons && profileDiv && logoutLink) {
   logoutLink.addEventListener("click", async (e) => {
     e.preventDefault();
     await fetch("php/logout.php");
-    window.location.reload();
+    window.location.href = '/index.html';
   });
 }

@@ -73,13 +73,14 @@ try {
         $stmt->bind_param("si", $newValue, $userId);
     }
 
-    // 8. ΕΚΤΕΛΕΣΗ ΕΝΗΜΕΡΩΣΗΣ
-    if ($stmt->execute()) {
-        // Ενημέρωση session για ορισμένα πεδία
-        if (in_array($field, ['firstName', 'lastName', 'email', 'studentId'])) {
-            $_SESSION[$field] = $newValue;
-        }
-        
+    $sessionFieldMap = [
+        'first_name' => 'firstName',
+        'last_name' => 'lastName',
+        'student_id' => 'studentId'
+    ];
+
+    if (isset($sessionFieldMap[$field])) {
+        $_SESSION[$sessionFieldMap[$field]] = $newValue;
         echo json_encode(["success" => true]);
     } else {
         echo json_encode(["errors" => ["general" => "Update failed"]]);

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   fetch("php/status.php")
     .then(response => response.json())
     .then(data => {
