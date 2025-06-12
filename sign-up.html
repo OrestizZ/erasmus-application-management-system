@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles/sign-up.css">
   <link rel="stylesheet" href="styles/header.css">
   <script src="scripts/include-header.js"></script>
+  <script src="scripts/is-user-logged-in.js"></script>
 </head>
 <body>
   <div data-include="header.html"></div>
@@ -23,49 +24,55 @@
         <form class="signup-form" method="POST" action="signup.php">
           <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Giorgos" maxlength="50" required>
+            <input type="text" id="firstName" name="firstName" placeholder="Giorgos" maxlength="50">
             <span class="error-message" id="firstNameError"></span>
           </div>
 
           <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Dilioridis" maxlength="50" required>
+            <input type="text" id="lastName" name="lastName" placeholder="Dilioridis" maxlength="50">
             <span class="error-message" id="lastNameError"></span>
           </div>
 
           <div class="form-group">
             <label for="studentId">Student ID</label>
-            <input type="text" id="studentId" name="studentId" placeholder="2021202200047" maxlength="13" required>
+            <input type="text" id="studentId" name="studentId" placeholder="2021202200047" maxlength="13">
             <span class="error-message" id="studentIdError"></span>
           </div>
 
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="text" id="phone" name="phone" placeholder="6966661821" maxlength="10" required>
+            <input type="text" id="phone" name="phone" placeholder="6966661821" maxlength="10">
             <span class="error-message" id="phoneError"></span>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="dit21047@go.uop.gr" maxlength="50" required>
+            <input type="text" id="email" name="email" placeholder="dit21047@go.uop.gr" maxlength="50">
             <span class="error-message" id="emailError"></span>
           </div>
 
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="peraste_me_please" maxlength="50" required>
+            <input type="text" id="username" name="username" placeholder="peraste_me_please" maxlength="50">
             <span class="error-message" id="usernameError"></span>
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="••••••••" maxlength="100" required>
+            <div class="password-container">
+              <input type="password" id="password" name="password" placeholder="••••••••" maxlength="100">
+              <span class="toggle-password">👁️</span>
+            </div>
             <span class="error-message" id="passwordError"></span>
           </div>
 
           <div class="form-group">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" maxlength="100" required>
+            <div class="password-container">
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" maxlength="100">
+              <span class="toggle-password">👁️</span>
+            </div>
             <span class="error-message" id="confirmPasswordError"></span>
           </div>
 
@@ -78,5 +85,6 @@
   </main>
   <script src="scripts/sign-up-form-client-validation.js"></script>
   <script src="scripts/signup-form-server-validation.js"></script>
+  <script src="scripts/togglePassword.js"></script>
 </body>
 </html>

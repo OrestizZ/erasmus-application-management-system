@@ -1,5 +1,6 @@
 const fieldSelect = document.getElementById('field');
 const newValueInput = document.getElementById('newValue');
+const togglePasswordEye = document.querySelector(".toggle-password");
 
 const maxlengthMap = {
     'First Name': 50,
@@ -16,5 +17,12 @@ fieldSelect.addEventListener('change', () => {
     const max = maxlengthMap[selected] || '';
     newValueInput.setAttribute('maxlength', max);
     newValueInput.type = (selected === 'Password') ? 'password' : 'text';
+    if(selected === 'Password') {
+        togglePasswordEye.style.display = "block";
+        togglePasswordEye.textContent = "👁️";   
+    }
+    else {
+        togglePasswordEye.style.display = "none";
+    }
     document.getElementById('changeSuccess').textContent = '';
 });

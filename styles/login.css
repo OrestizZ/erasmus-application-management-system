@@ -69,6 +69,30 @@
   font-size: 1rem;
 }
 
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 2.5em; /* Make space for the icon */
+  box-sizing: border-box;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  font-size: 1.2em; /* Adjust size if needed */
+  line-height: 1;
+}
+
 .main-btn {
   display: inline-block;
   font-size: 1rem;

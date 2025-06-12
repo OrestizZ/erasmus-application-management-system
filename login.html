@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles/login.css">
   <link rel="stylesheet" href="styles/header.css">
   <script src="scripts/include-header.js"></script>
+  <script src="scripts/is-user-logged-in.js"></script>
 </head>
 <body>
   <div data-include="header.html"></div>
@@ -23,7 +24,10 @@
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="••••••••" maxlength="100">
+            <div class="password-container">
+              <input type="password" id="password" name="password" placeholder="••••••••" maxlength="100">
+              <span class="toggle-password">👁️</span>
+            </div>
           </div>
           <button type="submit" class="main-btn">Login</button>
           <span id="signup">Don't have an account? <a href="sign-up.html">Sign up.</a></span>
@@ -32,5 +36,6 @@
     </div>
   </main>
   <script src="scripts/login.js"></script>
+  <script src="scripts/togglePassword.js"></script>
 </body>
 </html>

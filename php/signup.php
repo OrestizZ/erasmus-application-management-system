@@ -1,5 +1,12 @@
 <?php
+session_start();
+
 header('Content-Type: application/json');
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: /index.html");
+    exit;
+}
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
