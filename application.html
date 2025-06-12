@@ -14,9 +14,21 @@
   <main class="main">
     <div class="main-container">
       <div class="main-contents">
+        <div id="admin-period-settings" style="display:none; border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;">
+          <h2>Set Application Period</h2>
+          <label for="start-date">From:</label>
+          <input type="date" id="start-date">
+          <label for="end-date">Until:</label>
+          <input type="date" id="end-date">
+          <button id="save-period" class="main-btn">Submit</button>
+          <span id="period-status" style="margin-left: 10px; color: green;"></span>
+        </div>
+
         <span id="login-warning">
         You must be <a href="login.html">logged in</a> to fill out this form.
         </span>
+
+        <span id="period-warning"></span>
         
         <form class="application-form">
           <h1>Application Form</h1>
@@ -108,6 +120,6 @@
   <script src="scripts/form-access-check.js"></script>
   <script src="scripts/get-universities.js"></script>
   <script src="scripts/application-client-validation.js"></script>
+  <script src="scripts/period-settings.js"></script>
 </body>
 </html>
-
