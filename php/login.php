@@ -18,7 +18,7 @@ if (empty($username) || empty($password)) {
     exit;
 }
 
-$stmt = $conn->prepare("SELECT id, username, password_hash, first_name, last_name, student_id FROM users WHERE username = ?");
+$stmt = $conn->prepare("SELECT id, username, password_hash, first_name, last_name, student_id, role FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -40,6 +40,7 @@ $_SESSION['username'] = $user['username'];
 $_SESSION['firstName'] = $user['first_name'];
 $_SESSION['lastName'] = $user['last_name'];
 $_SESSION['studentId'] = $user['student_id'];
+$_SESSION['role'] = $user['role'];
 
 echo json_encode(["success" => true]);
 ?>

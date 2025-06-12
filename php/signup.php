@@ -19,6 +19,7 @@ $phone = $_POST['phone'] ?? '';
 $email = $_POST['email'] ?? '';
 $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
+$role = 'user';
 
 $errors = [];
 
@@ -48,8 +49,8 @@ try {
     }
 
     $hashed = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, student_id, phone, email, username, password_hash) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssss", $first, $last, $studentId, $phone, $email, $username, $hashed);
+    $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, student_id, phone, email, username, password_hash, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssss", $first, $last, $studentId, $phone, $email, $username, $hashed, $role);
 
     $stmt->execute();
     echo json_encode(["success" => true]);
