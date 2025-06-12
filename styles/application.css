@@ -62,6 +62,13 @@
   font-size: 1rem;
 }
 
+#gpaUpload,
+#englishCertificate,
+#foreignCertificate{
+  padding: 0;
+}
+
+
 .radio-group {
   display: flex;
   flex-wrap: wrap;
@@ -107,6 +114,13 @@
 #login-warning a{
   color: var(--bright-red);
   text-decoration: underline;
+}
+
+.error-message{
+  color: var(--bright-red);
+  padding-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 @media (min-width: 601px) {
