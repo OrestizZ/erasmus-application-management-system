@@ -30,7 +30,7 @@
 
         <span id="period-warning"></span>
         
-        <form class="application-form">
+        <form class="application-form" action="php/submit_application.php" method="POST" enctype="multipart/form-data">
           <h1>Application Form</h1>
           <!-- Name fields -->
           <div class="form-group">
@@ -49,60 +49,60 @@
           <!-- Academic fields -->
           <div class="form-group">
             <label for="passedPercent">Passed Courses (%)</label>
-            <input type="number" id="passedPercent" name="passedPercent" min="0" max="100" placeholder="75">
+            <input type="number" id="passedPercent" name="pass_rate" min="0" max="100" placeholder="75">
             <span class="error-message" id="passedPercentError"></span>
           </div>
           <div class="form-group">
             <label for="gpa">GPA</label>
-            <input type="number" step="0.01" id="gpa" name="gpa" min="0" max="10" placeholder="7.5">
+            <input type="number" step="0.01" id="gpa" name="avg_grade" min="0" max="10" placeholder="7.5">
             <span class="error-message" id="gpaError"></span>
           </div>
 
           <!-- Language proficiency -->
           <fieldset class="form-group radio-group">
             <legend>English Proficiency</legend>
-            <label><input type="radio" name="engLevel" value="A1"> A1</label>
-            <label><input type="radio" name="engLevel" value="A2"> A2</label>
-            <label><input type="radio" name="engLevel" value="B1"> B1</label>
-            <label><input type="radio" name="engLevel" value="B2"> B2</label>
-            <label><input type="radio" name="engLevel" value="C1"> C1</label>
-            <label><input type="radio" name="engLevel" value="C2"> C2</label>
+            <label><input type="radio" name="english_level" value="A1"> A1</label>
+            <label><input type="radio" name="english_level" value="A2"> A2</label>
+            <label><input type="radio" name="english_level" value="B1"> B1</label>
+            <label><input type="radio" name="english_level" value="B2"> B2</label>
+            <label><input type="radio" name="english_level" value="C1"> C1</label>
+            <label><input type="radio" name="english_level" value="C2"> C2</label>
           </fieldset>
           <span class="error-message" id="radioError"></span>
 
           <!-- University choices -->
           <div class="form-group">
             <label for="uni1">University Choice 1</label>
-            <select id="uni1" name="uni1">
+            <select id="uni1" name="university_1">
               <option value="">Choose University</option>
             </select>
             <span class="error-message" id="uni1Error"></span>
           </div>
           <div class="form-group">
             <label for="uni2">University Choice 2</label>
-            <select id="uni2" name="uni2">
+            <select id="uni2" name="university_2">
               <option value="">Choose University</option>
             </select>
           </div>
           <div class="form-group">
             <label for="uni3">University Choice 3</label>
-            <select id="uni3" name="uni3">
+            <select id="uni3" name="university_3">
               <option value="">Choose University</option>
             </select>
           </div>
           <div class="form-group">
             <label for="gpaUpload">GPA document</label>
-            <input type="file" accept=".pdf" name="gpaUpload" id="gpaUpload">
+            <input type="file" accept=".pdf" name="transcript_path" id="gpaUpload">
             <span class="error-message" id="gpaUploadError"></span>
           </div>
           <div class="form-group">
             <label for="englishCertificate">English Certificate Document</label>
-            <input type="file" accept=".pdf" name="englishCertificate" id="englishCertificate">
+            <input type="file" accept=".pdf" name="certificates_path" id="englishCertificate">
             <span class="error-message" id="englishCertificateError"></span>
           </div>
           <div class="form-group">
-            <label for="foreignCertificate">Foreign Certificate Document</label>
-            <input type="file" accept=".pdf" multiple name="foreignCertificate" id="foreignCertificate">
+            <label for="foreignCertificate">Foreign Certificate Document(s)</label>
+            <input type="file" accept=".pdf" multiple name="certificates_path" id="foreignCertificate">
             <span class="error-message" id="foreignCertificateError"></span>
           </div>
 
@@ -120,6 +120,7 @@
   <script src="scripts/form-access-check.js"></script>
   <script src="scripts/get-universities.js"></script>
   <script src="scripts/application-client-validation.js"></script>
+  <script src="scripts/application-server-validation.js"></script>
   <script src="scripts/period-settings.js"></script>
 </body>
 </html>
