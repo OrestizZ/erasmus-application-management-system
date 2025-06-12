@@ -73,6 +73,8 @@ try {
         $stmt->bind_param("si", $newValue, $userId);
     }
 
+    $stmt->execute();
+
     $sessionFieldMap = [
         'first_name' => 'firstName',
         'last_name' => 'lastName',
@@ -81,10 +83,9 @@ try {
 
     if (isset($sessionFieldMap[$field])) {
         $_SESSION[$sessionFieldMap[$field]] = $newValue;
-        echo json_encode(["success" => true]);
-    } else {
-        echo json_encode(["errors" => ["general" => "Update failed"]]);
     }
+
+    echo json_encode(["success" => true]);
 
 } catch (mysqli_sql_exception $e) {
     echo json_encode(["errors" => ["server" => "Database error: " . $e->getMessage()]]);
