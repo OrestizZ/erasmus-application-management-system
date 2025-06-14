@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 session_start();
 require_once 'db_connect.php';
 header('Content-Type: application/json');
@@ -13,32 +11,59 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+$user_folder = 'user_' . $user_id;
 
-$uploadDir = realpath(__DIR__ . '/../uploads') . '/';
-if (!is_dir($uploadDir)) {
-    mkdir($uploadDir, 0777, true);
+$uploadBase = realpath(__DIR__ . '/../uploads') . '/';
+$userUploadDir = $uploadBase . $user_folder . '/';
+
+if (!is_dir($userUploadDir)) {
+  mkdir($userUploadDir, 0777, true);
 }
 
-$transcriptPath = '';
-$certificatePath = '';
+// --- Upload GPA (transcript) ---
+$gpaPath = '';
+if (isset($_FILES['gpa_path']) && $_FILES['gpa_path']['error'] === 0) {
+  $filename = basename($_FILES['gpa_path']['name']);
+  $targetPath = $userUploadDir . $filename;
+  if (move_uploaded_file($_FILES['gpa_path']['tmp_name'], $targetPath)) {
+    $gpaPath = $user_folder . '/' . $filename;
+  }
+}
 
-if (isset($_FILES['transcript_path']) && $_FILES['transcript_path']['error'] === 0) {
-    $filename = basename($_FILES['transcript_path']['name']);
-    $targetPath = $uploadDir . $filename;
-    if (move_uploaded_file($_FILES['transcript_path']['tmp_name'], $targetPath)) {
-        $transcriptPath = $filename;
+// --- Upload English Proof ---
+$englishPath = '';
+if (isset($_FILES['english_path']) && $_FILES['english_path']['error'] === 0) {
+  $filename = basename($_FILES['english_path']['name']);
+  $targetPath = $userUploadDir . $filename;
+  if (move_uploaded_file($_FILES['english_path']['tmp_name'], $targetPath)) {
+    $englishPath = $user_folder . '/' . $filename;
+  }
+}
+
+// --- Upload multiple certificates ---
+$certificatePaths = [];
+if (isset($_FILES['certificates_path']) && is_array($_FILES['certificates_path']['name'])) {
+  foreach ($_FILES['certificates_path']['name'] as $index => $name) {
+    if ($_FILES['certificates_path']['error'][$index] === 0) {
+      $filename = basename($name);
+      $tmp_name = $_FILES['certificates_path']['tmp_name'][$index];
+      $targetPath = $userUploadDir . $filename;
+      if (move_uploaded_file($tmp_name, $targetPath)) {
+        $certificatePaths[] = $user_folder . '/' . $filename;  // Αποθήκευση στο path
+      } else {
+        // Αν κάτι πάει στραβά με την αποθήκευση
+        echo "Error uploading certificate file: $name";
+      }
+    } else {
+      // Εμφάνιση σφάλματος για αρχεία που δεν φορτώνονται
+      echo "Error in file upload: " . $_FILES['certificates_path']['error'][$index];
     }
+  }
 }
 
-if (isset($_FILES['certificates_path']) && $_FILES['certificates_path']['error'] === 0) {
-    $filename = basename($_FILES['certificates_path']['name']);
-    $targetPath = $uploadDir . $filename;
-    if (move_uploaded_file($_FILES['certificates_path']['tmp_name'], $targetPath)) {
-        $certificatePath = $filename;
-    }
-}
+$certificatePathsJson = json_encode($certificatePaths);
 
-// Read form fields
+// --- Read and validate other fields ---
 $avg_grade = $_POST['avg_grade'] ?? null;
 $pass_rate = $_POST['pass_rate'] ?? null;
 $english_level = $_POST['english_level'] ?? '';
@@ -46,30 +71,30 @@ $university_1 = $_POST['university_1'] ?? '';
 $university_2 = !empty($_POST['university_2']) ? $_POST['university_2'] : 'NULL';
 $university_3 = !empty($_POST['university_3']) ? $_POST['university_3'] : 'NULL';
 
-// Simple validation
 if ($avg_grade === null || $pass_rate === null || empty($english_level) || empty($university_1)) {
-    $response['errors']['server'] = 'Missing required fields.';
-    echo json_encode($response);
-    exit;
+  $response['errors']['server'] = 'Missing required fields.';
+  echo json_encode($response);
+  exit;
 }
 
-// Escape values
+// Escape strings
 $english_level = $conn->real_escape_string($english_level);
-$university_1 = $conn->real_escape_string($university_1);
-$university_2 = $conn->real_escape_string($university_2);
-$university_3 = $conn->real_escape_string($university_3);
+$university_1 = (int)$university_1;
+$university_2 = ($university_2 !== 'NULL') ? (int)$university_2 : 'NULL';
+$university_3 = ($university_3 !== 'NULL') ? (int)$university_3 : 'NULL';
 
+// Build query
 $query = "
 INSERT INTO applications 
-(user_id, avg_grade, pass_rate, english_level, university_1, university_2, university_3, transcript_path, certificates_path, accepted, submitted_at)
+(user_id, avg_grade, pass_rate, english_level, university_1, university_2, university_3, gpa_path, english_path, certificates_path, accepted, submitted_at)
 VALUES 
-($user_id, $avg_grade, $pass_rate, '$english_level', $university_1, " . ($university_2 === 'NULL' ? 'NULL' : $university_2) . ", " . ($university_3 === 'NULL' ? 'NULL' : $university_3) . ", '$transcriptPath', '$certificatePath', NULL, NOW())
+($user_id, $avg_grade, $pass_rate, '$english_level', $university_1, $university_2, $university_3, '$gpaPath', '$englishPath', '$certificatePathsJson', NULL, NOW())
 ";
 
 if ($conn->query($query)) {
-    $response['success'] = true;
+  $response['success'] = true;
 } else {
-    $response['errors']['server'] = 'Database error: ' . $conn->error;
+  $response['errors']['server'] = 'Database error: ' . $conn->error;
 }
 
 echo json_encode($response);

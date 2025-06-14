@@ -19,8 +19,14 @@ function validateForm(form) {
     const field = form.querySelector(`#${id}`);
     if (!field || !field.value || (field.type === "file" && field.files.length === 0)) {
       const errorSpan = form.querySelector(`#${id}Error`);
-      if (errorSpan) errorSpan.textContent = "This field is required";
-      hasErrors = true;
+      if (errorSpan) {
+        errorSpan.textContent = "This field is required";
+        errorSpan.style.display = "block";
+        hasErrors = true;
+      }
+      else {
+        errorSpan.style.display = "none";
+      }
     }
   });
 
@@ -28,15 +34,27 @@ function validateForm(form) {
   const selectedRadio = Array.from(radioGroup).some((radio) => radio.checked);
   if (!selectedRadio) {
     const radioError = form.querySelector("#radioError");
-    if (radioError) radioError.textContent = "This field is required";
-    hasErrors = true;
+    if (radioError) {
+      radioError.textContent = "This field is required";
+      radioError.style.display = "block";
+      hasErrors = true;
+    }
+    else {
+      radioError.style.display = "none"; 
+    }
   }
 
   const termsCheckbox = form.querySelector('input[name="terms"]');
   if (!termsCheckbox.checked) {
     const termsError = form.querySelector("#termsError");
-    if (termsError) termsError.textContent = "This field is required";
-    hasErrors = true;
+    if (termsError) {
+      termsError.textContent = "This field is required";
+      termsError.style.display = "block";
+      hasErrors = true;
+    }
+    else {
+      termsError.style.display = "none";
+    }
   }
 
   return hasErrors;

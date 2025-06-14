@@ -124,10 +124,17 @@
 }
 
 .error-message{
+  display: none;
   color: var(--bright-red);
   padding-top: 5px;
   font-size: 14px;
   font-weight: bold;
+}
+
+.checkbox-group label a{
+  color: var(--white);
+  text-decoration: underline;
+  font-weight: normal;
 }
 
 @media (min-width: 601px) {
