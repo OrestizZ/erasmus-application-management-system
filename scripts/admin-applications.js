@@ -1,55 +1,76 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const tableBody = document.querySelector("#applicationsTable tbody");
+  const minPassRateInput = document.getElementById("minPassRate");
+  const universityFilter = document.getElementById("universityFilter");
+  const sortByGPA = document.getElementById("sortByGPA");
+  const applyFiltersBtn = document.getElementById("applyFilters");
 
-    
-    fetch('get_universities.php')
-      .then(res => res.json())
-      .then(data => {
-        const select = document.getElementById('universityFilter');
-        data.forEach(u => {
-          const option = document.createElement('option');
-          option.value = u.id;
-          option.textContent = u.name;
-          select.appendChild(option);
-        });
-      });
+  function generateFileLink(path) {
+    if (!path) return '-';
+    const filename = path.split('/').pop();
+    return `<a href="${path}" target="_blank" download>${filename}</a>`;
+  }
 
-    
-    function loadApplications() {
-      const minRate = document.getElementById('minRate').value;
-      const univId = document.getElementById('universityFilter').value;
-      const sort = document.getElementById('sortByAvg').checked;
+  function generateMultipleLinks(paths) {
+    if (!Array.isArray(paths) || paths.length === 0) return '-';
+    return paths.map(path => {
+      const filename = path.split('/').pop();
+      return `<a href="${path}" target="_blank" download>${filename}</a>`;
+    }).join('<br>');
+  }
 
-      let url = `fetch_applications.php?min_pass_rate=${minRate}`;
-      if (univId) url += `&university_id=${univId}`;
-      if (sort) url += `&order_by_avg=desc`;
+  function fetchApplications() {
+    const params = new URLSearchParams();
 
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          const tbody = document.querySelector('#resultsTable tbody');
-          tbody.innerHTML = ''; 
-
-          data.forEach(app => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-              <td>${app.first_name}</td>
-              <td>${app.last_name}</td>
-              <td>${app.username}</td>
-              <td>${app.student_id}</td>
-              <td>${app.avg_grade}</td>
-              <td>${app.pass_rate}%</td>
-              <td>${app.english_level}</td>
-              <td>${app.university_1 || '-'}</td>
-              <td>${app.university_2 || '-'}</td>
-              <td>${app.university_3 || '-'}</td>
-              <td><a href="${app.transcript_path}" target="_blank">PDF</a></td>
-              <td><a href="${app.certificates_path}" target="_blank">PDF</a></td>
-              <td><input type="checkbox" ${app.accepted == 1 ? 'checked' : ''} disabled></td>
-            `;
-            tbody.appendChild(tr);
-          });
-        });
+    if (minPassRateInput.value) {
+      params.append("minPassRate", minPassRateInput.value);
     }
 
-    
-    loadApplications();
-  
+    if (universityFilter.value) {
+      params.append("university", universityFilter.value);
+    }
+
+    if (sortByGPA.checked) {
+      params.append("sortByGPA", "true");
+    }
+
+    fetch(`php/get_applications.php?${params.toString()}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.success) throw new Error("Failed to fetch applications");
+
+        tableBody.innerHTML = ""; // clear previous data
+
+        data.applications.forEach(app => {
+          const tr = document.createElement("tr");
+
+          tr.innerHTML = `
+            <td>${app.firstName}</td>
+            <td>${app.lastName}</td>
+            <td>${app.studentId}</td>
+            <td>${app.avg_grade}</td>
+            <td>${app.pass_rate}%</td>
+            <td>${app.english_level}</td>
+            <td>${app.university_1}</td>
+            <td>${app.university_2 || '-'}</td>
+            <td>${app.university_3 || '-'}</td>
+            <td>${generateFileLink(app.gpa_path)}</td>
+            <td>${generateFileLink(app.english_path)}</td>
+            <td>${generateMultipleLinks(app.certificates_path)}</td>
+            <td>${app.accepted === null ? 'Pending' : app.accepted ? 'Yes' : 'No'}</td>
+          `;
+
+          tableBody.appendChild(tr);
+        });
+      })
+      .catch(err => {
+        console.error("Error loading applications:", err);
+      });
+  }
+
+  // Load data on first page load
+  fetchApplications();
+
+  // Re-fetch when filters are applied
+  applyFiltersBtn.addEventListener("click", fetchApplications);
+});
