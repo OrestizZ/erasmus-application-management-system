@@ -85,6 +85,7 @@ while ($row = $result->fetch_assoc()) {
         'english_path' => !empty($row['english_path']) ? $userFolder . $row['english_path'] : null,
         'certificates_path' => $certificates,
         'accepted' => $row['accepted'],
+        'public' => $row['public'],
         'submitted_at' => $row['submitted_at']
     ];
 }

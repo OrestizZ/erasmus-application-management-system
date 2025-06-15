@@ -75,6 +75,33 @@ blockquote {
   box-shadow: 0 4px 8px rgba(0,0,0,0.25);
 }
 
+.results .table-wrapper,
+.results #results-message {
+  display: none;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.table-wrapper th, .table-wrapper td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.table-wrapper th {
+  background-color: var(--bright-red);
+  color: #fff;
+  font-weight: bold;
+}
+
 @media (min-width: 601px) {
   .navigationDiv .nav-links {
     display: flex;
@@ -92,6 +119,16 @@ blockquote {
 
   .gallery-grid img {
     flex: 1 1 45%;
+  }
+
+   .table-wrapper table {
+    min-width: 600px;
+    font-size: 14px;
+  }
+
+  .table-wrapper th,
+  .table-wrapper td {
+    padding: 6px 10px;
   }
 }
 

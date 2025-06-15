@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <td>${generateFileLink(app.english_path)}</td>
             <td>${generateMultipleLinks(app.certificates_path)}</td>
             <td>${app.accepted === null ? 'Pending' : app.accepted ? 'Yes' : 'No'}</td>
+            <td>${app.public === null ? 'Pending' : app.public ? 'Yes' : 'No'}</td>
           `;
 
           tableBody.appendChild(tr);
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((res) => res.json())
       .then((data) => {
         alert(data.message);
+        fetchApplications();
       })
       .catch((err) => {
         console.error("Error publishing applications:", err);
