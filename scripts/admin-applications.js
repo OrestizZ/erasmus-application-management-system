@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
           tr.innerHTML = `
             <td><input type="checkbox" name="accept[]" value="${app.id}" ${app.accepted ? "checked" : ""}></td>
+            <td>${app.accepted === null ? 'Pending' : app.accepted ? 'Yes' : 'No'}</td>
+            <td>${app.public === null ? 'Pending' : app.public ? 'Yes' : 'No'}</td>
             <td>${app.firstName}</td>
             <td>${app.lastName}</td>
             <td>${app.studentId}</td>
@@ -59,8 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <td>${generateFileLink(app.gpa_path)}</td>
             <td>${generateFileLink(app.english_path)}</td>
             <td>${generateMultipleLinks(app.certificates_path)}</td>
-            <td>${app.accepted === null ? 'Pending' : app.accepted ? 'Yes' : 'No'}</td>
-            <td>${app.public === null ? 'Pending' : app.public ? 'Yes' : 'No'}</td>
           `;
 
           tableBody.appendChild(tr);
