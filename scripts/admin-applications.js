@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const universityFilter = document.getElementById("universityFilter");
   const sortByGPA = document.getElementById("sortByGPA");
   const applyFiltersBtn = document.getElementById("applyFilters");
+  const acceptForm = document.getElementById("acceptForm");
 
   function generateFileLink(path) {
     if (!path) return '-';
@@ -39,12 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(data => {
         if (!data.success) throw new Error("Failed to fetch applications");
 
-        tableBody.innerHTML = ""; // clear previous data
+        tableBody.innerHTML = "";
 
         data.applications.forEach(app => {
           const tr = document.createElement("tr");
 
           tr.innerHTML = `
+            <td><input type="checkbox" name="accept[]" value="${app.id}" ${app.accepted ? "checked" : ""}></td>
             <td>${app.firstName}</td>
             <td>${app.lastName}</td>
             <td>${app.studentId}</td>
@@ -68,9 +70,29 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Load data on first page load
+  // Load initial data
   fetchApplications();
 
-  // Re-fetch when filters are applied
+  // Re-fetch with filters
   applyFiltersBtn.addEventListener("click", fetchApplications);
+
+  // Submit acceptances
+  acceptForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const formData = new FormData(acceptForm);
+
+    fetch("php/accept_applications.php", {
+      method: "POST",
+      body: formData
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        fetchApplications(); // refresh
+      })
+      .catch(err => {
+        console.error("Error submitting acceptances:", err);
+      });
+  });
 });

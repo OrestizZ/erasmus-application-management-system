@@ -107,6 +107,16 @@
   color: #000;
 }
 
+#submitAccept {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
 @media (min-width: 601px) {
   .main-container {
     flex-direction: column;

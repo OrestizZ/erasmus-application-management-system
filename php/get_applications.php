@@ -71,6 +71,7 @@ while ($row = $result->fetch_assoc()) {
     }
 
     $applications[] = [
+        'id' => $row['id'],
         'firstName' => $row['first_name'],
         'lastName' => $row['last_name'],
         'studentId' => $row['student_id'],
