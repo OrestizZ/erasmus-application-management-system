@@ -95,4 +95,23 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error submitting acceptances:", err);
       });
   });
+
+  const submitPublicBtn = document.getElementById("submitPublic");
+
+  submitPublicBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    if (!confirm("Are you sure you want to publish the accepted applications?")) return;
+
+    fetch("php/publish_applications.php", {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert(data.message);
+      })
+      .catch((err) => {
+        console.error("Error publishing applications:", err);
+      });
+  });
 });

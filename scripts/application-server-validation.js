@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // form.style.display = "none";
-
     document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
 
     const hasClientErrors = validateForm(form);
@@ -28,10 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const result = await response.json();
+      const successMessage = document.getElementById("success-message");
       
       if (result.success) {
-        alert('Application submitted successfully!');
         form.reset();
+        form.style.display = "none";
+        successMessage.style.display = "block";
       } else {
         for (const field in result.errors) {
           const errorSpan = document.getElementById(field + "Error");
