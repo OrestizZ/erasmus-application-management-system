@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Αποθήκευση νέων ημερομηνιών
     saveBtn.addEventListener("click", async () => {
-      const start = startInput.value;
-      const end = endInput.value;
+      const start = startInput.value === "" ? null : startInput.value;
+      const end = endInput.value === "" ? null : endInput.value;
 
       const saveRes = await fetch("php/set_application_period.php", {
         method: "POST",
