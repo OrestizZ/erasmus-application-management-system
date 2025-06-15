@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // form.style.display = "none";
+
     document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
 
     const hasClientErrors = validateForm(form);
@@ -41,6 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       alert('Error submitting form');
       console.error(error);
-}
+    }
   });
 });

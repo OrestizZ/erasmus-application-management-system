@@ -50,13 +50,7 @@ if (isset($_FILES['certificates_path']) && is_array($_FILES['certificates_path']
       $targetPath = $userUploadDir . $filename;
       if (move_uploaded_file($tmp_name, $targetPath)) {
         $certificatePaths[] = $user_folder . '/' . $filename;  // Αποθήκευση στο path
-      } else {
-        // Αν κάτι πάει στραβά με την αποθήκευση
-        echo "Error uploading certificate file: $name";
       }
-    } else {
-      // Εμφάνιση σφάλματος για αρχεία που δεν φορτώνονται
-      echo "Error in file upload: " . $_FILES['certificates_path']['error'][$index];
     }
   }
 }
