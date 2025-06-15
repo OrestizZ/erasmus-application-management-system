@@ -137,6 +137,13 @@
   font-weight: normal;
 }
 
+#admin-period-settings {
+  display: none; 
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  margin-bottom: 20px;
+}
+
 #admin-period-settings a{
   color: var(--white);
   text-decoration: underline;
