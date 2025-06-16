@@ -30,10 +30,8 @@ if (!in_array($field, $allowedFields)) {
 }
 
 try {
-    // 5. ΕΙΔΙΚΟΙ ΕΛΕΓΧΟΙ ΓΙΑ ΚΡΙΣΙΜΑ ΠΕΔΙΑ
     $errors = [];
     
-    // Ελεγχος μοναδικότητας email
     if ($field === 'email') {
         $stmt = $conn->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
         $stmt->bind_param("si", $newValue, $userId);
@@ -42,8 +40,7 @@ try {
             $errors['email'] = "Email already in use by another account";
         }
     }
-    
-    // Ελεγχος μοναδικότητας studentId
+
     if ($field === 'student_id') {
         $stmt = $conn->prepare("SELECT id FROM users WHERE student_id = ? AND id != ?");
         $stmt->bind_param("si", $newValue, $userId);
@@ -52,21 +49,19 @@ try {
             $errors['studentId'] = "Student ID already in use";
         }
     }
-    
-    // Αν υπάρχουν σφάλματα, επιστροφή
+
     if (!empty($errors)) {
         echo json_encode(["errors" => $errors]);
         exit;
     }
 
-    // 6. ΕΙΔΙΚΗ ΠΕΡΙΠΤΩΣΗ: ΑΛΛΑΓΗ ΚΩΔΙΚΟΥ
     if ($field === 'password_hash') {
         $hashedPassword = password_hash($newValue, PASSWORD_DEFAULT);
         $updateSql = "UPDATE users SET password_hash = ? WHERE id = ?";
         $stmt = $conn->prepare($updateSql);
         $stmt->bind_param("si", $hashedPassword, $userId);
     } 
-    // 7. ΓΙΑ ΟΛΑ ΤΑ ΑΛΛΑ ΠΕΔΙΑ
+
     else {
         $updateSql = "UPDATE users SET $field = ? WHERE id = ?";
         $stmt = $conn->prepare($updateSql);

@@ -7,7 +7,6 @@ function validateChangeCredentials() {
   const getField = document.getElementById('field').value;
   const value = document.getElementById('newValue').value.trim();
 
-  // Name/Last name: no digits
   if (getField === 'First Name' && /\d/.test(value)) {
     valid = false;
     document.getElementById('changeError').textContent = "First name cannot contain digits.";

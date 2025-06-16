@@ -2,10 +2,8 @@
 require_once 'db_connect.php';
 header('Content-Type: application/json');
 
-// Δημοσιεύει μόνο τις accepted αιτήσεις (public = 1)
 $updateAccepted = "UPDATE applications SET public = 1 WHERE accepted = 1";
 
-// Κάνει μη δημόσιες τις μη accepted αιτήσεις (public = 0)
 $updateNotAccepted = "UPDATE applications SET public = 0 WHERE accepted = 0";
 
 $success1 = $conn->query($updateAccepted);

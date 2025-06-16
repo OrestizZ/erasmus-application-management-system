@@ -2,7 +2,7 @@ document.querySelector('.change-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if (!validateChangeCredentials()) {
-        return; // Αν υπάρχουν σφάλματα στο client, δεν στέλνουμε τίποτα στον server
+        return;
     }
     
     const fieldMap = {

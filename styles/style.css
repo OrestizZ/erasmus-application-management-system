@@ -88,12 +88,12 @@
   height: auto;
 }
 
-/* Phone (< 601px) */
+
 @media (max-width: 600px) {
 
 }
 
-/* Tablet (601px – 1024px) */
+
 @media (min-width: 601px) {
   .main-container {
     flex-direction: row;
@@ -111,7 +111,7 @@
   }
 }
 
-/* Desktop (>1024px) */
+
 @media (min-width: 1025px) {
   .main-container {
     width: 80%;

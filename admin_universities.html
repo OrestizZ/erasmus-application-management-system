@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Universities</title>
+  <link rel="stylesheet" href="styles/admin_universities.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <script src="scripts/include-header.js"></script>
+  <script src="scripts/is-user-logged-out.js"></script>
+  <script src="scripts/is-admin.js"></script>
+</head>
+<body>
+  <div data-include="header.html"></div>
+  <main class="main">
+    <div class="main-container">
+      <div class="main-contents">
+        <section class="university-admin">
+            <h1>Manage Universities</h1>
+
+            <form id="universityForm">
+                <input type="hidden" id="universityId">
+                <input type="text" id="universityName" placeholder="University Name" required>
+                <button type="submit" class="main-btn">Save</button>
+            </form>
+
+            <div class="table-wrapper">
+                <table id="universitiesTable">
+                <thead>
+                    <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                </table>
+            </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer>
+    Website created by Orestis Zappas & Georgios Dilioridis with ❤️
+  </footer>
+  <script src="scripts/admin-universities.js"></script>
+</body>
+</html>

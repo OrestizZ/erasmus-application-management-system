@@ -2,7 +2,6 @@
 require_once 'db_connect.php';
 header('Content-Type: application/json');
 
-// Start query
 $query = "
 SELECT 
   a.*, 
@@ -23,7 +22,6 @@ $conditions = [];
 $params = [];
 $types = "";
 
-// Apply filters
 if (isset($_GET['minPassRate']) && is_numeric($_GET['minPassRate'])) {
     $conditions[] = "a.pass_rate >= ?";
     $params[] = $_GET['minPassRate'];
@@ -46,7 +44,6 @@ if (isset($_GET['sortByGPA']) && $_GET['sortByGPA'] === 'true') {
     $query .= " ORDER BY a.avg_grade DESC";
 }
 
-// Prepare and bind
 $stmt = $conn->prepare($query);
 if ($params) {
     $stmt->bind_param($types, ...$params);

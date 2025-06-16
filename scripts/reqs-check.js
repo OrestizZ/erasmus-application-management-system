@@ -1,24 +1,21 @@
 document.querySelector('.quick-check-form').addEventListener('submit', function(e) {
-  e.preventDefault(); // Αποφυγή υποβολής φόρμας
+  e.preventDefault();
 
-  // Παίρνουμε τιμές
   const year = document.getElementById('yearSelect').value;
   const percent = parseFloat(document.getElementById('percentInput').value);
   const gpa = parseFloat(document.getElementById('gpaInput').value);
   const engCert = document.querySelector('input[name="engCert"]:checked')?.value;
 
-  // Καθαρίζουμε προηγούμενο αποτέλεσμα
   let resultDiv = document.getElementById('result');
   if (!resultDiv) {
     resultDiv = document.createElement('div');
     resultDiv.id = 'result';
     document.querySelector('.quick-check-form').appendChild(resultDiv);
   }
-  resultDiv.innerHTML = ''; // Καθαρισμός
+  resultDiv.innerHTML = '';
 
   let errors = [];
 
-  // Έλεγχοι
   if (year === '1st') {
     errors.push('❌ You need to be at least on your 2nd year of study.');
   }
@@ -38,7 +35,6 @@ document.querySelector('.quick-check-form').addEventListener('submit', function(
     errors.push('❌ You need at least B2 knowledge of the English language.');
   }
 
-  // Show results.
   if (errors.length > 0) {
     resultDiv.innerHTML = '<h3>Results:</h3><ul><li>' + errors.join('</li><li>') + '</li></ul>';
     resultDiv.style.color = 'red';

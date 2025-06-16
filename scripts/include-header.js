@@ -13,7 +13,6 @@ window.addEventListener("DOMContentLoaded", () => {
       .then(data => {
         el.innerHTML = data;
 
-        // Εδώ φορτώνεις όλα τα scripts που αφορούν το header, π.χ.
         const offCanvasScript = document.createElement('script');
         offCanvasScript.src = 'scripts/off-canvas-menu.js';
         document.body.appendChild(offCanvasScript);

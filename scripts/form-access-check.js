@@ -47,6 +47,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           const now = new Date().toISOString().split("T")[0];
 
           if(period.start_date === null || period.end_date === null) {
+            if (form) {
+              form.style.opacity = "0.5";
+              form.style.pointerEvents = "none";
+            }
+            
             const periodWarning = document.getElementById("period-warning");
             periodWarning.textContent = `The applications period has not been set yet.`;
             periodWarning.style.display = "block";

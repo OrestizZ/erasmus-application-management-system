@@ -1,5 +1,5 @@
 header{
-    /* position: fixed; */
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,7 +69,7 @@ button{
     max-width: 40px;
 }
 
-/* Toggle Container */
+
 .off-canvas-toggle {
     display: inline-flex;
     align-items: center;
@@ -80,7 +80,7 @@ button{
     cursor: pointer;
 }
 
-/* Caret Arrow */
+
 .off-canvas-caret {
     width: 0;
     height: 0;
@@ -94,8 +94,8 @@ button{
     transform: rotate(180deg);
 }
 
-/* Menu Panel from Top */
-/* Off-canvas menu container */
+
+
 #off-canvas-menu {
     position: absolute;
     top: -100%;
@@ -107,19 +107,19 @@ button{
     box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
 }
 
-/* Show menu below header */
+
 #off-canvas-menu.show {
     top: 60px;
 }
 
-/* Menu list */
+
 #off-canvas-menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Menu items as plain links */
+
 #off-canvas-menu li {
     padding: 0.75em 0;
     border-bottom: 1px solid var(--white);
@@ -166,16 +166,16 @@ button{
 
 .profile .dropdown {
     position: absolute;
-    /* right: 0; */
+    
     background-color: var(--bright-red);
     box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
-    /* width: 50%; */
+    
     border: none;
     padding: 10px 0;
     min-width: 160px;
     z-index: 999;
-    /* left: 80%; */
-    /* transform: translateX(-50%); */
+    
+    
 }
 
 .profile .dropdown.show {

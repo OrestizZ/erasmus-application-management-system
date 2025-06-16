@@ -5,21 +5,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   const saveBtn = document.getElementById("save-period");
   const status = document.getElementById("period-status");
 
-  // Έλεγχος αν είναι admin
   const res = await fetch("php/status.php");
   const user = await res.json();
 
   if (user.loggedIn && user.role === "admin") {
     adminBox.style.display = "block";
 
-    // Φόρτωσε υπάρχουσες ημερομηνίες
     const periodRes = await fetch("php/get_application_period.php");
     const period = await periodRes.json();
 
     if (period.start_date) startInput.value = period.start_date;
     if (period.end_date) endInput.value = period.end_date;
 
-    // Αποθήκευση νέων ημερομηνιών
     saveBtn.addEventListener("click", async () => {
       const start = startInput.value === "" ? null : startInput.value;
       const end = endInput.value === "" ? null : endInput.value;

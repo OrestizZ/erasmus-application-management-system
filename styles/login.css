@@ -29,7 +29,7 @@
   justify-content: center;
   width: 100%;
   max-width: 1200px;
-  /* min-height: 100vh; */
+  
 }
 
 .form-container {
@@ -77,7 +77,7 @@
 
 .password-container input {
   width: 100%;
-  padding-right: 2.5em; /* Make space for the icon */
+  padding-right: 2.5em; 
   box-sizing: border-box;
 }
 
@@ -89,7 +89,7 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  font-size: 1.2em; /* Adjust size if needed */
+  font-size: 1.2em; 
   line-height: 1;
 }
 
@@ -133,7 +133,7 @@
 
 @media (min-width: 601px) {
   .main-container {
-    /* flex-direction: row; */
+    
     max-width: 800px;
     gap: 3rem;
   }

@@ -2,7 +2,6 @@
 require_once 'db_connect.php';
 header('Content-Type: application/json');
 
-// Έλεγχος αν είναι δημοσιευμένα
 $check = $conn->query("SELECT results_published FROM settings WHERE id = 1");
 if (!$check || !$check->fetch_assoc()['results_published']) {
     echo json_encode(["error" => "Results not yet published."]);

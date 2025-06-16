@@ -2,7 +2,6 @@
 require_once 'db_connect.php';
 header('Content-Type: application/json');
 
-// Έλεγχος αν έχει λήξει η περίοδος αιτήσεων
 $now = date('Y-m-d');
 $periodCheck = $conn->query("SELECT * FROM application_period WHERE start_date <= '$now' AND end_date >= '$now'");
 $applicationOpen = $periodCheck->num_rows > 0;
@@ -16,7 +15,6 @@ if ($applicationOpen) {
     exit;
 }
 
-// Ερώτημα για δημοσιευμένες και αποδεκτές αιτήσεις
 $query = "
 SELECT 
     u.first_name, 

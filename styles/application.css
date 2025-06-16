@@ -1,4 +1,4 @@
-/* application.css */
+
 :root {
   --darkgrey: #212339;
   --bright-red: crimson;
@@ -138,23 +138,70 @@
   font-weight: normal;
 }
 
-#admin-period-settings {
-  display: none; 
-  border: 1px solid #ccc; 
-  padding: 10px; 
-  margin-bottom: 20px;
+#admin-period-settings,
+#admin-period-settings input,
+#admin-period-settings .main-btn {
+  box-sizing: border-box;
 }
 
-#admin-period-settings a{
-  color: var(--white);
+#admin-period-settings {
+  display: none;
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+#admin-period-settings h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: var(--bright-red);
+}
+
+#admin-period-settings label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+#admin-period-settings input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#admin-period-settings .main-btn {
+  margin-top: 10px;
+  padding: 10px 16px;
+  font-size: 16px;
+}
+
+#period-status {
+  display: block;
+  margin-top: 10px;
+  color: green;
+}
+
+#admin-period-settings a {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 12px;
+  color: var(--bright-red);
   text-decoration: underline;
+  font-weight: bold;
 }
 
 #success-message {
   display: none;
 }
 
-@media (min-width: 601px) {
+@media (max-width: 601px) {
   .main-container {
     flex-direction: row;
     gap: 3rem;
@@ -162,6 +209,38 @@
   .main-contents,
   .main-contents + .main-contents {
     flex: 1;
+  }
+
+  #admin-period-settings {
+    padding: 12px;
+  }
+
+  #admin-period-settings h2 {
+    font-size: 18px;
+  }
+
+  #admin-period-settings input[type="date"],
+  #admin-period-settings .main-btn {
+    font-size: 16px;
+  }
+
+  #admin-period-settings input[type="date"] {
+    padding: 6px;
+  }
+
+  #admin-period-settings label,
+  #admin-period-settings input,
+  #admin-period-settings button,
+  #admin-period-settings a {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #period-status {
+    display: block;
+    margin-top: 10px;
+    margin-left: 0;
   }
 }
 

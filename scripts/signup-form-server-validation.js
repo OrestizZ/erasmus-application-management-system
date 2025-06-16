@@ -1,15 +1,13 @@
 document.querySelector(".signup-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Καλούμε το client-side validation
   if (!validateSignupForm()) {
-    return; // Αν υπάρχουν σφάλματα στο client, δεν στέλνουμε τίποτα στον server
+    return;
   }
 
   const form = e.target;
   const formData = new FormData(form);
 
-  // Καθαρίζουμε παλιά server-side error μηνύματα
   document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
 
   try { 
@@ -28,7 +26,6 @@ document.querySelector(".signup-form").addEventListener("submit", async (e) => {
         }
       }
     } else if (result.success) {
-      // Μπορείς να εμφανίσεις μήνυμα επιτυχίας
       const successMessage = document.getElementById("successMessage");
       document.querySelector(".signup-form").style.display = "none";
       document.querySelector(".signup-form-title").style.display = "none";

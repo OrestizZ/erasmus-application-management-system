@@ -105,7 +105,7 @@
   cursor: pointer;
   transition: background 0.3s;
   text-align: center;
-  /* margin-top: 1rem; */
+  
 }
 
 .main-btn:hover {
@@ -131,7 +131,7 @@
 
 @media (min-width: 601px) {
   .main-container {
-    /* flex-direction: row; */
+    
     max-width: 800px;
     gap: 3rem;
   }

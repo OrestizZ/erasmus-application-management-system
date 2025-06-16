@@ -3,18 +3,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const tbody = document.querySelector("#resultsTable tbody");
   const resultsMessage = document.getElementById('results-message');
 
-  // Ελέγχουμε αν είναι ανοιχτή περίοδος υποβολής
   fetch("php/check_application_period.php")
     .then(res => res.json())
     .then(data => {
       if (data.isOpen) {
-        // Περίοδος υποβολής ανοιχτή: κρύβουμε τον πίνακα
         if (tableWrapper) {
           tableWrapper.style.display = "none";
           resultsMessage.style.display = "block";
         }
       } else {
-        // Περίοδος υποβολής κλειστή: εμφανίζουμε τα αποτελέσματα
         if (tableWrapper) {
           tableWrapper.style.display = "block";
           resultsMessage.style.display = "none";

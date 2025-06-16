@@ -12,7 +12,6 @@ function validateSignupForm() {
   const password = document.getElementById('password').value.trim();
   const confirm = document.getElementById('confirmPassword').value.trim();
 
-  // Name/Last name: no digits
   if(!firstName) {
     valid = false;
     document.getElementById('firstNameError').textContent = "This field is required";
@@ -31,7 +30,6 @@ function validateSignupForm() {
     document.getElementById('lastNameError').textContent = "Last name cannot contain digits.";
   }
 
-  // StudentID: 2022 + 13 digits
   if(!studentId) {
     valid = false;
     document.getElementById('studentIdError').textContent = "This field is required";
@@ -41,7 +39,6 @@ function validateSignupForm() {
     document.getElementById('studentIdError').textContent = "Student ID must start with 2022 and have 13 digits.";
   }
 
-  // Phone: exactly 10 digits
   if(!phone) {
     valid = false;
     document.getElementById('phoneError').textContent = "This field is required";
@@ -65,7 +62,6 @@ function validateSignupForm() {
     document.getElementById('usernameError').textContent = "This field is required";
   }
 
-  // Passwords: match, 5+ characters, 1 symbol
   if(!password) {
     valid = false;
     document.getElementById('passwordError').textContent = "This field is required";

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".application-form");
-  if (!form) return; // ασφάλεια
+  if (!form) return;
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formData = new FormData(form);
 
-    // Προσθήκη πολλαπλών αρχείων certificates
     const certInput = form.querySelector('#certificates_path');
     if (certInput && certInput.files.length > 0) {
       for (let i = 0; i < certInput.files.length; i++) {

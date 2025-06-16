@@ -4,7 +4,6 @@ const logoutLink = document.getElementById("logout");
 
 if (loginButtons && profileDiv && logoutLink) {
   
-  // Έλεγχος login status
   fetch("php/status.php")
     .then(response => response.json())
     .then(data => {
@@ -12,7 +11,6 @@ if (loginButtons && profileDiv && logoutLink) {
         loginButtons.style.display = "none";
         profileDiv.style.display = "block";
 
-        // Προαιρετικά: εμφάνιση username αν υπάρχει
         const profileUsername = document.querySelector(".profile-username");
         if (profileUsername && data.username) {
           profileUsername.textContent = data.username;
@@ -24,7 +22,6 @@ if (loginButtons && profileDiv && logoutLink) {
     })
     .catch(error => console.error("Error fetching login status:", error));
 
-  // Logout handler
   logoutLink.addEventListener("click", async (e) => {
     e.preventDefault();
     await fetch("php/logout.php");

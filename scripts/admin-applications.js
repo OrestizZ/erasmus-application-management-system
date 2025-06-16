@@ -71,13 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Load initial data
   fetchApplications();
 
-  // Re-fetch with filters
   applyFiltersBtn.addEventListener("click", fetchApplications);
 
-  // Submit acceptances
   acceptForm.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -90,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(res => res.json())
       .then(data => {
         alert(data.message);
-        fetchApplications(); // refresh
+        fetchApplications();
       })
       .catch(err => {
         console.error("Error submitting acceptances:", err);
