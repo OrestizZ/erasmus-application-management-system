@@ -1,6 +1,6 @@
 # Erasmus Application Management System
 
-This web application was developed as part of the "Network Applications & Services Design" course. It is a comprehensive Erasmus application management system.
+This web application was developed as part of the "Network Applications & Services Design" course for the University of the Peloponnese. It is a comprehensive Erasmus application management system.
 
 ## Core Features
 * **User Management:** Provides the ability to register (Signup), log in, and edit student profile details.
@@ -12,3 +12,12 @@ This web application was developed as part of the "Network Applications & Servic
 * **Environment:** Runs on a XAMPP environment using Apache and MySQL (via phpMyAdmin) for the database.
 * **Backend:** PHP is used for database communication, session variable management, and server-side validation.
 * **Frontend:** JavaScript is used for immediate form checks (client-side validation) and asynchronous operations.
+
+## Authors
+
+This project was created by:
+
+* **Orestis Zappas** - @OrestizZ (https://github.com/OrestizZ)
+* **Georgios Dilioridis** - @GeorgiosDilio (https://github.com/GeorgiosDilio)
+
+as a university assignment for the **Department of Informatics and Telecommunications (University of Peloponnese)**.
